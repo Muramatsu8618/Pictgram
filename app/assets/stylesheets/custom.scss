@@ -82,11 +82,18 @@ form-control {
   .navbar-brand {
     padding: 0px;
     margin-top: 15px;
+    min-width: 10px;
   }
 
   img {
-    height: 40px;
+    height: 6vh;
   }
+
+  li {
+    float: right;
+  }
+
+
 }
 
 .btn-black {
@@ -143,6 +150,7 @@ form-control {
 .hidden_box {
   margin: 2px 0;
   padding: 0;
+  display: inline;
 }
 
 .hidden_box label {
@@ -151,7 +159,8 @@ form-control {
 }
 
 .hidden_box label:hover {
-  background: #efefef;
+  background: transparent;
+  cursor: pointer;
 }
 
 // .hidden_box input {
