@@ -154,7 +154,15 @@ form-control {
   background: #efefef;
 }
 
-.hidden_box input {
+// .hidden_box input {
+//   display: none;
+// }
+
+#label1 input {
+  display: none;
+}
+
+.checkbox {
   display: none;
 }
 
