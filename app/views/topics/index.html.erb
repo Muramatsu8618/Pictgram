@@ -1,6 +1,6 @@
 <div class="topic-index-wrapper">
   <div class="container">
-    <%= @topics.each do |topic| %>
+    <% @topics.each_with_index do |topic, idx| %>
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="topic-index-single">
@@ -12,36 +12,36 @@
             <% if !topic.favorite_users.include?(current_user) %>
               <%= link_to favorites_path(topic_id: topic.id), method: :post do %>
                 <%= image_tag 'icons/heart-black.png', class: 'topic-index-icon' %>
-              <% end %>
             <% end %>
-              <%= link_to comments_path(topic_id: topic.id), method: :post do %>
-                <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
+            <% end %>
+              <!-- <%= link_to comments_path(topic_id: topic.id), method: :post do %> -->
+              <div class="hidden_box">
+                <label for="label<%= idx + 1 %>"><%= image_tag 'icons/comment.png', class: 'topic-index-icon' %></label>
+                <input type="checkbox" id="label<%= idx + 1 %>" class="checkbox"/>
               <% end %>
             <p class="topic-text">
               <!-- 投稿時コメント -->
-              <%= topic.description %>
+              <%= topic.description %><br>
               <!-- コメント本文 -->
-              <%= topic.comments.each do |text| %>
+              <% @body.each do |text| %>
                 <%= text.body %>
               <% end %>
+            </p>
               <!-- コメントフォーム部分 -->
-              <div class="hidden_box">
-                <label for="label1">コメント</label>
-                <input type="checkbox" id="label1" class="checkbox"/>
+
+                <!-- <label for="label1">コメント</label> -->
+                <input type="checkbox" id="lable<%= idx + 1 %>" class="checkbox"/>
                 <div class="hidden_show">
                   <!-- コメントフォーム非表示部分 -->
                   <%= form_for @comment do |f| %>
                   <div class="form-group">
-                    <!-- <%= f.label :コメント %> -->
-                    <%= f.text_area :body, class: 'form-control'  %>
+                    <%= f.label :コメント %>
+                    <%= f.text_area :body, class: 'form-control' %>
                   </div>
                   <%= f.submit '送信', class: 'btn btn-black btn-block' %>
+                  <% end %>
                 </div>
               </div>
-
-              <% end %>
-            </div>
-              </p>
           </div>
         </div>
       </div>

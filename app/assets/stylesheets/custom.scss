@@ -167,7 +167,7 @@ form-control {
 //   display: none;
 // }
 
-#label1 input {
+[id^="label_"] input {
   display: none;
 }
 
